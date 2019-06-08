@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/book-purple/Orders-node/issues"
   },
-  "homepage": "https://github.com/book-purple/Orders-node#readme"
+  "homepage": "https://github.com/book-purple/Orders-node#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.5.13"
+  }
 }
