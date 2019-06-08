@@ -1,6 +1,13 @@
-const express = requires('express')
+const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => res.sent("Gaurav Sharma"))
+let checkoutRouter = require('./routes/apis/checkoutRouter');
+
+app.get('/', (req, res) => res.json("Gaurav Sharma"))
+//app.use(app.router);
+//checkoutRouter.initialize(app);
+app.use('/order/v1', checkoutRouter);
 app.listen(port, () => console.log("Example app"))
+
+
