@@ -2,6 +2,9 @@
  * Module Dependencies.
  */
 var mongoose = require('mongoose');
+var mongoUri = 'mongodb+srv://bpuser:bpuser@book-purple-cluster-ukidg.mongodb.net/catalog?retryWrites=true';
+mongoose.connect(mongoUri, {useNewUrlParser: true});
+var OrdersDb = mongoose.connection;
 var Schema = mongoose.Schema;
 
 /**
