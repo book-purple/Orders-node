@@ -47,7 +47,7 @@ var listOrder = function(req, res) {
 };
 
 exports.create = createOrder;
-exports.create = readOrder;
+exports.find = readOrder;
 exports.update = updateOrder;
 exports.delete = deleteOrder;
 exports.list = listOrder;
