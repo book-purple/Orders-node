@@ -13,7 +13,7 @@ router.get('/checkout', function(res, res){
  * API to create new order.
  */
 router.get('/new/order', function(req, res){
-    orderService.createOrder(req);
+    orderService.createOrder(req, res);
 });
 
 module.exports = router;

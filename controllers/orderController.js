@@ -1,12 +1,28 @@
 var mongoose = require("mongoose");
 var order = mongoose.model("order");
+var date = require("date-and-time");
 
 /**
  * Function to create an Order.
  * @param {} req
  * @param {*} res
  */
-var createOrder = function(req, res) {};
+var createOrder = function(req, res) {
+    var order = new order({
+        "order_id": "9001",
+        "created_at": new Date()
+    });
+};
+
+var saveOrder = function(order) {
+    order.save(function(err, result) {
+       if (err) {
+           throw err;
+       } else if (result) {
+           console.log("Order saved successfully");
+       }
+    });
+}
 
 /**
  * Function to read an Order.
