@@ -4,17 +4,33 @@ const orderService = require('../../services/orderService');
 /**
  * Dummy router.
  */
-app.get('/checkout', function(res, res){
+app.get('/checkout', function (res, res) {
     return res.json({
-        'hello':'world'
+        'hello': 'world'
     });
 });
 
 /**
  * API to create new order.
  */
-app.post('/new/order', function(req, res){
-    orderService.createOrder(req, res);
+app.post('/init/order', function (req, res) {
+    let orderRequest = getOrderRequest(req);
+    let order_id = orderService.createOrder(orderRequest);
+    if (null == order_id) {
+        return res.json({
+            'error': 'initiate order failed'
+        });
+    }
+    return res.json({
+        'order_id': order_id
+    });
 });
+
+function getOrderRequest(req) {
+    return {
+        'vendor_id': req.vendor_id,
+        'user_id': req.user_id
+    };
+}
 
 module.exports = app;

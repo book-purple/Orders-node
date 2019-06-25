@@ -15,12 +15,11 @@ var createOrder = function(req, res) {
 };
 
 var saveOrder = function(order) {
-    order.save(function(err, result) {
-       if (err) {
-           throw err;
-       } else if (result) {
-           console.log("Order saved successfully");
-       }
+    order.save().then((result) => {
+        return result.order_id;
+    }).catch((err) => {
+        console.log(err);
+        return null;
     });
 }
 
@@ -67,3 +66,4 @@ exports.find = readOrder;
 exports.update = updateOrder;
 exports.delete = deleteOrder;
 exports.list = listOrder;
+exports.saveOrder = saveOrder;

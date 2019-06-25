@@ -32,11 +32,24 @@ var OrderSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    modified_at: {
+        type: Date,
+        default: Date.now
+    },
     order_id: {
-        type: Number,
+        type: String,
         unique: true,
+        index: true,
         required: 'order cannot be blank',
         //validate: [validateOrderLength, 'order must be of length 9 or less']
+    },
+    user_id: {
+        type: String,
+        index: true
+    },
+    vendor_id: {
+        type: String,
+        index: true
     }
 });
 
