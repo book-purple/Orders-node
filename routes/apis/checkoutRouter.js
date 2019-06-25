@@ -1,9 +1,10 @@
-let router = require('express').Router();
+var express = require('express');
+var app = express();
 const orderService = require('../../services/orderService');
 /**
  * Dummy router.
  */
-router.get('/checkout', function(res, res){
+app.get('/checkout', function(res, res){
     return res.json({
         'hello':'world'
     });
@@ -12,8 +13,8 @@ router.get('/checkout', function(res, res){
 /**
  * API to create new order.
  */
-router.get('/new/order', function(req, res){
+app.post('/new/order', function(req, res){
     orderService.createOrder(req, res);
 });
 
-module.exports = router;
+module.exports = app;

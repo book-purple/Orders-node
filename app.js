@@ -1,9 +1,12 @@
-const express = require('express')
-const app = express()
-const port = 3000
+// app.js
+
+let express = require('express');
+let app = express();
+let bodyParser = require('body-parser');
+const port = 3000;
+app.use(bodyParser.json());
 
 let checkoutRouter = require('./routes/apis/checkoutRouter');
-
 app.get('/', (req, res) => res.json("Book-Purple Order and checkout Service"))
 // health check API
 app.use('/orders/health', (req, res) => res.json(

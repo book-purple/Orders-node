@@ -7,6 +7,8 @@ const orderController = require("../controllers/orderController");
  * @param {Response} res 
  */
 function createOrder(req, res) {
+    var orderRequest = req.body;
+    console.log(JSON.stringify(orderRequest));
     console.log('create order service called...');
     var order = new orderModel({
         order_id: 9001,
