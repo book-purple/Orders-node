@@ -14,12 +14,11 @@ var createOrder = function(req, res) {
     });
 };
 
-var saveOrder = function(order) {
+var saveOrder = function(order, callback) {
     order.save().then((result) => {
-        return result.order_id;
+        return callback(undefined, result.order_id);
     }).catch((err) => {
-        console.log(err);
-        return null;
+        return callback(true, err);
     });
 }
 

@@ -13,16 +13,14 @@ app.get('/checkout', function (res, res) {
 /**
  * API to create new order.
  */
-app.post('/init/order', function (req, res) {
+app.post('/new/order', function (req, res) {
     let orderRequest = getOrderRequest(req);
-    let order_id = orderService.createOrder(orderRequest);
-    if (null == order_id) {
-        return res.json({
-            'error': 'initiate order failed'
-        });
-    }
-    return res.json({
-        'order_id': order_id
+    orderService.createOrder(orderRequest, function orderResponse(error, orderResponse){
+        if (error) {
+            return res.json(orderResponse);
+        }
+        // no use of variables of orderResponse here currently...
+        return res.json(orderResponse);
     });
 });
 
