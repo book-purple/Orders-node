@@ -10,6 +10,7 @@ const commonUtils = require("../utils/commonUtils");
 function createOrder(orderRequest, orderResponse) {
     console.log('create order service called...');
     var orderId = commonUtils.getOrderId();
+    // create order model
     var order = new orderModel({
         order_id: orderId,
         created_at: new Date(),

@@ -14,7 +14,7 @@ app.get('/checkout', function (res, res) {
  * API to create new order.
  */
 app.post('/new/order', function (req, res) {
-    let orderRequest = getOrderRequest(req);
+    let orderRequest = req.body;
     orderService.createOrder(orderRequest, function orderResponse(error, orderResponse){
         if (error) {
             return res.json(orderResponse);
@@ -23,12 +23,5 @@ app.post('/new/order', function (req, res) {
         return res.json(orderResponse);
     });
 });
-
-function getOrderRequest(req) {
-    return {
-        'vendor_id': req.vendor_id,
-        'user_id': req.user_id
-    };
-}
 
 module.exports = app;
