@@ -50,6 +50,15 @@ var OrderSchema = new Schema({
     vendor_id: {
         type: String,
         index: true
+    },
+    order_state: {
+            order_state_name: {
+                type: String
+            },
+            order_state_id: {
+                type: Number,
+                index: true
+            }
     }
 });
 

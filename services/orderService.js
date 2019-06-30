@@ -1,7 +1,7 @@
 var orderModel = require('../models/orderModel');
 const orderController = require("../controllers/orderController");
-const commonUtils = require("../utils/commonUtils");
-
+const commonUtils = require('../utils/commonUtils');
+const orderStateMachine = require('../utils/orderStateMachine');
 /**
  * Function to create and save order.
  * @param {Request} req 
@@ -10,13 +10,21 @@ const commonUtils = require("../utils/commonUtils");
 function createOrder(orderRequest, orderResponse) {
     console.log('create order service called...');
     var orderId = commonUtils.getOrderId();
+    var orderState = orderStateMachine.execNextState(orderStateMachine.NEW_ORDER);
+
     // create order model
     var order = new orderModel({
         order_id: orderId,
         created_at: new Date(),
         user_id: orderRequest.user_id,
-        vendor_id: orderRequest.vendor_id
+        vendor_id: orderRequest.vendor_id,
+        order_state: {
+            order_state_name: orderState.orderStateName,
+            order_state_id: orderState.orderStateId
+        }
     });
+    
+    // save order
     orderController.saveOrder(order, function callback(err, orderId) {
         var error = undefined;
         var createOrderResponse;
