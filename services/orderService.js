@@ -25,9 +25,9 @@ function createOrder(orderRequest, orderResponse) {
             order_state_id: orderState.orderStateId
         }
     });
-    
+
     // save order
-    orderController.saveOrder(order, function callback(err, orderId) {
+    orderController.saveOrder(order, (err, orderId) => {
         var error = undefined;
         var createOrderResponse;
         if (err) {
@@ -44,4 +44,26 @@ function createOrder(orderRequest, orderResponse) {
     });
 }
 
+/**
+ * Function to initiate checkout 
+ * @param {Request} initCheckoutRequest 
+ * @param {Response} initCheckoutResponse 
+ */
+function initCheckout(initCheckoutRequest, initCheckoutResponse) {
+    logger.infp('Init checkout service called...');
+    var orderId = initCheckoutRequest.orderId;
+    orderController.findByOrderId(orderId, (error, order) => {
+        if (error) {
+            error = true;
+            initCheckoutRequest = {
+                'errorMessage': 'unable to find order',
+                'error': err
+            }
+        }
+        var orderState = order.order_state;
+        orderStateMachine.execNextState(,orderState);
+    });
+}
+
 module.exports.createOrder = createOrder;
+module.exports.initCheckout = initCheckout;
