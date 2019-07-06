@@ -1,6 +1,7 @@
 var orderModel = require('../models/orderModel');
 const orderController = require("../controllers/orderController");
 const commonUtils = require('../utils/commonUtils');
+const logger = require('../utils/logger');
 const orderStateMachine = require('../utils/orderStateMachine');
 
 /**
@@ -9,7 +10,7 @@ const orderStateMachine = require('../utils/orderStateMachine');
  * @param {Response} res 
  */
 function createOrder(orderRequest, orderResponse) {
-    console.log('create order service called...');
+    logger.info('create order service called...');
     var orderId = commonUtils.getOrderId();
     var orderState = orderStateMachine.execNextState(orderStateMachine.NEW_ORDER);
 
