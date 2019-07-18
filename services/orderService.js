@@ -61,7 +61,7 @@ function initCheckout(initCheckoutRequest, initCheckoutResponse) {
             }
         }
         var orderState = order.order_state;
-        orderStateMachine.execNextState(,orderState);
+        orderStateMachine.execNextState(orderStateMachine.SENT_TO_VENDOR,orderState);
     });
 }
 
