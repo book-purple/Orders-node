@@ -6,8 +6,8 @@ const orderStateMachine = require('../utils/orderStateMachine');
 
 /**
  * Function to create and save order.
- * @param {Request} req
- * @param {Response} res
+ * @param orderRequest
+ * @param orderResponse
  */
 function createOrder(orderRequest, orderResponse) {
     logger.info('create order service called...');
@@ -39,7 +39,7 @@ function createOrder(orderRequest, orderResponse) {
         }
         createOrderResponse = {
             'orderId': orderId
-        }
+        };
         return orderResponse(error, createOrderResponse);
     });
 }
@@ -61,7 +61,7 @@ function initCheckout(initCheckoutRequest, initCheckoutResponse) {
             }
         }
         var orderState = order.order_state;
-        var orderState = orderStateMachine.execNextState(orderStateMachine.SENT_TO_VENDOR, orderState);
+        orderStateMachine.execNextState(orderStateMachine.SENT_TO_VENDOR, orderState);
     });
 }
 
