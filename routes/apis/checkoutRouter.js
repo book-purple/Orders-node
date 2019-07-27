@@ -1,7 +1,11 @@
 var express = require('express');
 var app = express();
-const orderService = require('../../services/orderService');
+var OrderService = require('../../services/orderService');
 var errorUtil = require('../../utils/errorUtils');
+
+/** Data Members **/
+var orderService = new OrderService();
+
 /**
  * Dummy router.
  */
@@ -17,6 +21,7 @@ app.get('/checkout', function (res, res) {
 app.post('/new/order', function (req, res) {
     let orderRequest = req.body;
     // call order service to create order
+
     orderService.createOrder(orderRequest, (error, orderResponse) => {
         if (error) {
             var errorObject = errorUtil(orderResponse);
