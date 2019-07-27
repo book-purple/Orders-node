@@ -1,7 +1,7 @@
 /**
  * function to return Error Object
- * @param {*} req 
- * @param {*} callback 
+ * @param {*} req
+ * @param {*} callback
  */
 var errorOject = (req) => {
     var errorResponse = {

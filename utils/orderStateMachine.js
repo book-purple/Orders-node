@@ -60,8 +60,8 @@ function createInitOrderState() {
 
 /**
  * Function to create and return order state
- * @param {Object} orderStateName 
- * @param {Object} orderStateId 
+ * @param {Object} orderStateName
+ * @param {Object} orderStateId
  */
 function getOrderState(orderStateName, orderStateId) {
     return orderState = {
@@ -73,7 +73,7 @@ function getOrderState(orderStateName, orderStateId) {
 
 /**
  * Function to move order to sent to vendor
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToSentToVendor(order) {
     order.orderState = SENT_TO_VENDOR;
@@ -83,7 +83,7 @@ function moveOrderToSentToVendor(order) {
 
 /**
  * Function to move order to pending with vendor
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToPendingWithVendor(order) {
     order.orderState = PENDING_WITH_VENDOR;
@@ -93,7 +93,7 @@ function moveOrderToPendingWithVendor(order) {
 
 /**
  * Function to move order to accepted by vendor
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToAcceptedByVendor(order) {
     order.orderState = ACCEPTED_BY_VENDOR;
@@ -103,7 +103,7 @@ function moveOrderToAcceptedByVendor(order) {
 
 /**
  * Function to move order to expired from vendor
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToExpiredFromVendor(order) {
     order.orderState = EXPIRED_FROM_VENDOR;
@@ -113,7 +113,7 @@ function moveOrderToExpiredFromVendor(order) {
 
 /**
  * Function to move order to sent to user
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToSentToUser(order) {
     order.orderState = SENT_TO_USER;
@@ -123,7 +123,7 @@ function moveOrderToSentToUser(order) {
 
 /**
  * Function to move order to order verified
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToOrderVerified(order) {
     order.orderState = ORDER_VERIFIED;
@@ -133,7 +133,7 @@ function moveOrderToOrderVerified(order) {
 
 /**
  * Function to move order to order complete
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToOrderComplete(order) {
     order.orderState = ORDER_COMPLETED;
@@ -143,7 +143,7 @@ function moveOrderToOrderComplete(order) {
 
 /**
  * Function to move order to order decline
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToOrderDecline(order) {
     order.orderState = ORDER_DECLINED;
@@ -153,7 +153,7 @@ function moveOrderToOrderDecline(order) {
 
 /**
  * Function to move order to pending with user
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToPendingWithUser(order) {
     order.orderState = PENDING_WITH_USER;
@@ -163,7 +163,7 @@ function moveOrderToPendingWithUser(order) {
 
 /**
  * Function to move order to expired from vendor
- * @param {Object} order 
+ * @param {Object} order
  */
 function moveOrderToExpiredFromVendor(order) {
     order.orderState = EXPIRED_FROM_VENDOR;

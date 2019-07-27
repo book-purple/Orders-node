@@ -6,8 +6,8 @@ const orderStateMachine = require('../utils/orderStateMachine');
 
 /**
  * Function to create and save order.
- * @param {Request} req 
- * @param {Response} res 
+ * @param {Request} req
+ * @param {Response} res
  */
 function createOrder(orderRequest, orderResponse) {
     logger.info('create order service called...');
@@ -45,9 +45,9 @@ function createOrder(orderRequest, orderResponse) {
 }
 
 /**
- * Function to initiate checkout 
- * @param {Request} initCheckoutRequest 
- * @param {Response} initCheckoutResponse 
+ * Function to initiate checkout
+ * @param {Request} initCheckoutRequest
+ * @param {Response} initCheckoutResponse
  */
 function initCheckout(initCheckoutRequest, initCheckoutResponse) {
     logger.infp('Init checkout service called...');
@@ -61,7 +61,7 @@ function initCheckout(initCheckoutRequest, initCheckoutResponse) {
             }
         }
         var orderState = order.order_state;
-        orderStateMachine.execNextState(,orderState);
+        var orderState = orderStateMachine.execNextState(orderStateMachine.SENT_TO_VENDOR, orderState);
     });
 }
 

@@ -9,8 +9,8 @@ mongoose.connect(mongoUri, {useNewUrlParser: true});
  * Orders Database connection
  */
 var ordersDb = mongoose.connection;
-ordersDb.on("error",console.error.bind(console, 'connection error:'));
-ordersDb.once('open', function(){
+ordersDb.on("error", console.error.bind(console, 'connection error:'));
+ordersDb.once('open', function () {
     // Orders DB connected
 });
 var Schema = mongoose.Schema;
@@ -52,13 +52,13 @@ var OrderSchema = new Schema({
         index: true
     },
     order_state: {
-            order_state_name: {
-                type: String
-            },
-            order_state_id: {
-                type: Number,
-                index: true
-            }
+        order_state_name: {
+            type: String
+        },
+        order_state_id: {
+            type: Number,
+            index: true
+        }
     }
 });
 
