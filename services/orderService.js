@@ -2,9 +2,16 @@ var orderModel = require('../models/orderModel');
 const orderController = require("../controllers/orderController");
 const commonUtils = require('../utils/commonUtils');
 const logger = require('../utils/logger');
-const orderStateMachine = require('../utils/orderStateMachine');
+const OrderStateMachine = require('../utils/orderStateMachine');
+
+/** Data Members **/
+var orderStateMachine = new OrderStateMachine();
 
 class OrderService {
+
+
+    constructor() {
+    }
 
     /**
      * Function to create and save order.
@@ -52,7 +59,7 @@ class OrderService {
      * @param {Response} initCheckoutResponse
      */
     initCheckout(initCheckoutRequest, initCheckoutResponse) {
-        logger.infp('Init checkout service called...');
+        logger.info('Init checkout service called...');
         var orderId = initCheckoutRequest.orderId;
         orderController.findByOrderId(orderId, (error, order) => {
             if (error) {
